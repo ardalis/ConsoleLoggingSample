@@ -6,10 +6,14 @@ namespace LoggingConsole
     {
         private readonly CustomLogger _logger = (CustomLogger)LogManager.GetCurrentClassLogger(typeof(CustomLogger));
 
-        public string SayHello(string name)
+        public Greeting()
         {
             _logger.SetCustomerId(123);
-            _logger.Info("SayHello started.");
+        }
+
+        public string SayHello(string name)
+        {
+            _logger.Info("{0} started.", nameof(SayHello));
             return $"Hello {name}!";
         }
     }

@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
 using NLog;
 using NLog.Config;
-using NLog.LayoutRenderers;
 using NLog.Targets;
 
 namespace LoggingConsole
@@ -15,8 +13,7 @@ namespace LoggingConsole
             var _logger = (CustomLogger)LogManager.GetCurrentClassLogger(typeof(CustomLogger));
             _logger.Info("Application started");
 
-
-        var greeting = new Greeting();
+            var greeting = new Greeting();
 
             Console.WriteLine(greeting.SayHello("Steve"));
 
@@ -36,43 +33,43 @@ namespace LoggingConsole
             var dbTarget = new DatabaseTarget();
             dbTarget.ConnectionStringName = "NLog";
             dbTarget.CommandText = @"
-INSERT INTO [dbo].[NLog]
-           ([MachineName]
-           ,[SiteName]
-           ,[Logged]
-           ,[Level]
-           ,[UserName]
-           ,[Message]
-           ,[Logger]
-           ,[Properties]
-           ,[ServerName]
-           ,[Port]
-           ,[Url]
-           ,[Https]
-           ,[ServerAddress]
-           ,[RemoteAddress]
-           ,[Callsite]
-           ,[CustomerId]
-           ,[Exception])
-     VALUES (
-            @machineName,
-            @siteName,
-            @logged,
-            @level,
-            @userName,
-            @message,
-            @logger,
-            @properties,
-            @serverName,
-            @port,
-            @url,
-            @https,
-            @serverAddress,
-            @remoteAddress,
-            @callSite,
-            @CustomerId,
-            @exception
-            )
+    INSERT INTO [dbo].[NLog]
+    ([MachineName]
+    ,[SiteName]
+    ,[Logged]
+    ,[Level]
+    ,[UserName]
+    ,[Message]
+    ,[Logger]
+    ,[Properties]
+    ,[ServerName]
+    ,[Port]
+    ,[Url]
+    ,[Https]
+    ,[ServerAddress]
+    ,[RemoteAddress]
+    ,[Callsite]
+    ,[CustomerId]
+    ,[Exception])
+        VALUES (
+    @machineName,
+    @siteName,
+    @logged,
+    @level,
+    @userName,
+    @message,
+    @logger,
+    @properties,
+    @serverName,
+    @port,
+    @url,
+    @https,
+    @serverAddress,
+    @remoteAddress,
+    @callSite,
+    @CustomerId,
+    @exception
+    )
 ";
             dbTarget.Parameters.Add(new DatabaseParameterInfo("@MachineName", "${machinename}"));
             dbTarget.Parameters.Add(new DatabaseParameterInfo("@SiteName", "n/a"));

@@ -4,7 +4,7 @@ namespace LoggingConsole
 {
     public class Greeting
     {
-        private readonly MemLogger _logger = (MemLogger)LogManager.GetCurrentClassLogger(typeof(MemLogger));
+        private readonly CustomLogger _logger = (CustomLogger)LogManager.GetCurrentClassLogger(typeof(CustomLogger));
 
         public string SayHello(string name)
         {

@@ -2,7 +2,7 @@ using NLog;
 
 namespace LoggingConsole
 {
-    public class MemLogger : Logger
+    public class CustomLogger : Logger
     {
         public void SetCustomerId(int CustomerId)
         {

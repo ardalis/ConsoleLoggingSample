@@ -12,7 +12,7 @@ namespace LoggingConsole
         static void Main(string[] args)
         {
             ConfigureLogging();
-            var _logger = (MemLogger)LogManager.GetCurrentClassLogger(typeof(MemLogger));
+            var _logger = (CustomLogger)LogManager.GetCurrentClassLogger(typeof(CustomLogger));
             _logger.Info("Application started");
 
 

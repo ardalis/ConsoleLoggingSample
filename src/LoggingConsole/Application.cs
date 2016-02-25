@@ -1,21 +1,24 @@
 using System;
+using NLog;
 
 namespace LoggingConsole
 {
-    public class Application : LoggedClass
+    public class Application
     {
         private readonly Greeting _greeting;
+        private readonly CustomLogger _logger;
 
-        public Application(Greeting greeting)
+        public Application(Greeting greeting, CustomLogger logger)
         {
             _greeting = greeting;
+            _logger = logger;
         }
 
         public void Run()
         {
-            Logger.Info("Application started.");
+            _logger.Info("Application started.");
             Console.WriteLine(_greeting.SayHello("Steve"));
-            Logger.Info("Application exiting");
+            _logger.Info("Application exiting");
         }
     }
 }

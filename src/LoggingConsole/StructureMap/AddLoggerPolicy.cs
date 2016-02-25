@@ -10,12 +10,13 @@ namespace LoggingConsole.StructureMap
     {
         protected override void apply(Type pluginType, IConfiguredInstance instance)
         {
-            var property = instance.SettableProperties().FirstOrDefault(p => p.Name == "Logger");
-            if (property != null)
+            var parameter =
+                instance.Constructor.GetParameters().FirstOrDefault(p => p.ParameterType == typeof (CustomLogger));
+            if (parameter != null)
             {
                 var logger = (CustomLogger)LogManager.GetLogger(pluginType.ToString(), typeof(CustomLogger));
-                instance.Dependencies.AddForProperty(property, logger);
-            }
+                instance.Dependencies.AddForConstructorParameter(parameter, logger);
+            } 
         }
     }
 }

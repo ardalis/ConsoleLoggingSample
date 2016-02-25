@@ -1,10 +1,19 @@
-﻿namespace LoggingConsole
+﻿using NLog;
+
+namespace LoggingConsole
 {
-    public class Greeting : LoggedClass
+    public class Greeting
     {
+        private readonly CustomLogger _logger;
+
+        public Greeting(CustomLogger logger)
+        {
+            _logger = logger;
+        }
+
         public string SayHello(string name)
         {
-            Logger.Info("{0} started.", nameof(SayHello));
+            _logger.Info("{0} started.", nameof(SayHello));
             return $"Hello2 {name}";
         }
     }

@@ -1,7 +1,9 @@
 ﻿using System;
+using LoggingConsole.StructureMap;
 using NLog;
 using NLog.Config;
 using NLog.Targets;
+using StructureMap;
 
 namespace LoggingConsole
 {
@@ -9,16 +11,11 @@ namespace LoggingConsole
     {
         static void Main(string[] args)
         {
+            var container = Container.For<ConsoleRegistry>();
             ConfigureLogging();
-            var _logger = (CustomLogger)LogManager.GetCurrentClassLogger(typeof(CustomLogger));
-            _logger.Info("Application started");
-
-            var greeting = new Greeting();
-
-            Console.WriteLine(greeting.SayHello("Steve"));
-
+            var app = container.GetInstance<Application>();
+            app.Run();
             Console.ReadLine();
-            _logger.Info("Application exiting.");
         }
 
         private static void ConfigureLogging()

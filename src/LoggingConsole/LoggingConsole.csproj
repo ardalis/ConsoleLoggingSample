@@ -37,6 +37,14 @@
       <HintPath>..\..\..\..\..\..\..\NuGetPackages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="StructureMap, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\NuGetPackages\structuremap.4.0.1.318\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.0.1.318, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\..\..\NuGetPackages\structuremap.4.0.1.318\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,6 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application.cs" />
+    <Compile Include="LoggedClass.cs" />
+    <Compile Include="StructureMap\AddLoggerPolicy.cs" />
+    <Compile Include="StructureMap\ConsoleRegistry.cs" />
     <Compile Include="Greeting.cs" />
     <Compile Include="CustomLogger.cs" />
     <Compile Include="Program.cs" />

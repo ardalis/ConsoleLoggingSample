@@ -1,20 +1,11 @@
-﻿using NLog;
-
-namespace LoggingConsole
+﻿namespace LoggingConsole
 {
-    public class Greeting
+    public class Greeting : LoggedClass
     {
-        private readonly CustomLogger _logger = (CustomLogger)LogManager.GetCurrentClassLogger(typeof(CustomLogger));
-
-        public Greeting()
-        {
-            _logger.SetCustomerId(123);
-        }
-
         public string SayHello(string name)
         {
-            _logger.Info("{0} started.", nameof(SayHello));
-            return $"Hello {name}!";
+            Logger.Info("{0} started.", nameof(SayHello));
+            return $"Hello2 {name}";
         }
     }
 }
